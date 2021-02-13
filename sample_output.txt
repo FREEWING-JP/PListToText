@@ -1,0 +1,500 @@
+plist file = sample_config.plist
+{
+  ACPI
+  {
+    Add
+    [
+      {
+        Enabled = true
+        Comment = "SSDT-PLUG-DRTNIA.aml"
+        Path = "SSDT-PLUG-DRTNIA.aml"
+      }
+      {
+        Enabled = true
+        Comment = "SSDT-EC-USBX-LAPTOP.aml"
+        Path = "SSDT-EC-USBX-LAPTOP.aml"
+      }
+      {
+        Enabled = true
+        Comment = "SSDT-PNLF.aml"
+        Path = "SSDT-PNLF.aml"
+      }
+      {
+        Enabled = true
+        Comment = "SSDT-XOSI.aml"
+        Path = "SSDT-XOSI.aml"
+      }
+    ]
+    Delete
+    [ ]
+    Patch
+    [
+      {
+        Comment = "Change _OSI to XOSI"
+        Count = 0
+        Enabled = true
+        Find = 5F4F5349 (X09TSQ==)
+        Limit = 0
+        Mask =  ()
+        OemTableId =  ()
+        Replace = 584F5349 (WE9TSQ==)
+        ReplaceMask =  ()
+        Skip = 0
+        TableLength = 0
+        TableSignature =  ()
+      }
+    ]
+    Quirks
+    {
+      FadtEnableReset = false
+      NormalizeHeaders = false
+      RebaseRegions = false
+      ResetHwSig = false
+      ResetLogoStatus = false
+    }
+  }
+  Booter
+  {
+    MmioWhitelist
+    [ ]
+    Patch
+    [ ]
+    Quirks
+    {
+      AllowRelocationBlock = false
+      AvoidRuntimeDefrag = true
+      DevirtualiseMmio = false
+      DisableSingleUser = false
+      DisableVariableWrite = false
+      DiscardHibernateMap = false
+      EnableSafeModeSlide = true
+      EnableWriteUnprotector = true
+      ForceExitBootServices = false
+      ProtectMemoryRegions = false
+      ProtectSecureBoot = false
+      ProtectUefiServices = false
+      ProvideCustomSlide = true
+      ProvideMaxSlide = 0
+      RebuildAppleMemoryMap = true
+      SetupVirtualMap = true
+      SignalAppleOS = false
+      SyncRuntimePermissions = true
+    }
+  }
+  DeviceProperties
+  {
+    Add
+    {
+      PciRoot(0x0)/Pci(0x2,0x0)
+      {
+        AAPL,ig-platform-id = 00001619 (AAAWGQ==)
+        framebuffer-patch-enable = 01000000 (AQAAAA==)
+        framebuffer-stolenmem = 00003001 (AAAwAQ==)
+        framebuffer-fbmem = 00009000 (AACQAA==)
+      }
+      PciRoot(0x0)/Pci(0x1b,0x0)
+      {
+        layout-id = 7
+      }
+    }
+    Delete
+    { }
+  }
+  Kernel
+  {
+    Add
+    [
+      {
+        Arch = "x86_64"
+        BundlePath = "Lilu.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/Lilu"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "VirtualSMC.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/VirtualSMC"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "WhateverGreen.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/WhateverGreen"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "AppleALC.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/AppleALC"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "RealtekRTL8111.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/RealtekRTL8111"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "USBInjectAll.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/USBInjectAll"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "AirportBrcmFixup.kext/Contents/PlugIns/AirPortBrcmNIC_Injector.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = ""
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "AirportBrcmFixup.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/AirportBrcmFixup"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "CPUFriend.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/CPUFriend"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+      {
+        Arch = "x86_64"
+        BundlePath = "HibernationFixup.kext"
+        Comment = ""
+        Enabled = true
+        ExecutablePath = "Contents/MacOS/HibernationFixup"
+        MaxKernel = ""
+        MinKernel = ""
+        PlistPath = "Contents/Info.plist"
+      }
+    ]
+    Block
+    [ ]
+    Emulate
+    {
+      Cpuid1Data =  ()
+      Cpuid1Mask =  ()
+      DummyPowerManagement = false
+      MaxKernel = ""
+      MinKernel = ""
+    }
+    Force
+    [ ]
+    Patch
+    [ ]
+    Quirks
+    {
+      AppleCpuPmCfgLock = true
+      AppleXcpmCfgLock = true
+      AppleXcpmExtraMsrs = false
+      AppleXcpmForceBoost = false
+      CustomSMBIOSGuid = false
+      DisableIoMapper = true
+      DisableLinkeditJettison = true
+      DisableRtcChecksum = false
+      ExtendBTFeatureFlags = false
+      ExternalDiskIcons = false
+      ForceSecureBootScheme = false
+      IncreasePciBarSize = false
+      LapicKernelPanic = false
+      LegacyCommpage = false
+      PanicNoKextDump = true
+      PowerTimeoutKernelPanic = true
+      SetApfsTrimTimeout = -1
+      ThirdPartyDrives = false
+      XhciPortLimit = true
+    }
+    Scheme
+    {
+      FuzzyMatch = true
+      KernelArch = "x86_64"
+      KernelCache = "Auto"
+    }
+  }
+  Misc
+  {
+    BlessOverride
+    [ ]
+    Boot
+    {
+      ConsoleAttributes = 0
+      HibernateMode = "None"
+      HideAuxiliary = false
+      LauncherOption = "Disabled"
+      LauncherPath = "Default"
+      PickerAttributes = 1
+      PickerAudioAssist = false
+      PickerMode = "Builtin"
+      PickerVariant = "Auto"
+      PollAppleHotKeys = false
+      ShowPicker = true
+      TakeoffDelay = 0
+      Timeout = -1
+    }
+    Debug
+    {
+      AppleDebug = true
+      ApplePanic = true
+      DisableWatchDog = true
+      DisplayDelay = 0
+      DisplayLevel = 2147483648
+      SerialInit = false
+      SysReport = false
+      Target = 3
+    }
+    Entries
+    [ ]
+    Security
+    {
+      AllowNvramReset = true
+      AllowSetDefault = true
+      ApECID = 0
+      AuthRestart = false
+      BlacklistAppleUpdate = true
+      DmgLoading = "Signed"
+      EnablePassword = false
+      ExposeSensitiveData = 6
+      HaltLevel = 2147483648
+      PasswordHash =  ()
+      PasswordSalt =  ()
+      ScanPolicy = 0
+      SecureBootModel = "Disabled"
+      Vault = "Optional"
+    }
+    Tools
+    [ ]
+  }
+  NVRAM
+  {
+    Add
+    {
+      4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
+      {
+        DefaultBackgroundColor = 00000000 (AAAAAA==)
+        UIScale = 01 (AQ==)
+      }
+      4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102
+      {
+        rtc-blacklist =  ()
+      }
+      7C436110-AB2A-4BBB-A880-FE41995C9F82
+      {
+        SystemAudioVolume = 46 (Rg==)
+        boot-args = "-v keepsyms=1 debug=0x100 alcid=7"
+        csr-active-config = 00000000 (AAAAAA==)
+        prev-lang:kbd = 72752D52553A323532 (cnUtUlU6MjUy)
+        run-efi-updater = "No"
+      }
+    }
+    Delete
+    {
+      4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
+      [
+        UIScale
+        DefaultBackgroundColor
+      ]
+      4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102
+      [
+        rtc-blacklist
+      ]
+      7C436110-AB2A-4BBB-A880-FE41995C9F82
+      [
+        boot-args
+      ]
+    }
+    LegacyEnable = false
+    LegacyOverwrite = false
+    LegacySchema
+    {
+      7C436110-AB2A-4BBB-A880-FE41995C9F82
+      [
+        EFILoginHiDPI
+        EFIBluetoothDelay
+        LocationServicesEnabled
+        SystemAudioVolume
+        SystemAudioVolumeDB
+        SystemAudioVolumeSaved
+        bluetoothActiveControllerInfo
+        bluetoothInternalControllerInfo
+        flagstate
+        fmm-computer-name
+        fmm-mobileme-token-FMM
+        fmm-mobileme-token-FMM-BridgeHasAccount
+        nvda_drv
+        prev-lang:kbd
+      ]
+      8BE4DF61-93CA-11D2-AA0D-00E098032B8C
+      [
+        Boot0080
+        Boot0081
+        Boot0082
+        BootNext
+        BootOrder
+      ]
+    }
+    WriteFlash = true
+  }
+  PlatformInfo
+  {
+    Automatic = true
+    CustomMemory = false
+    Generic
+    {
+      AdviseWindows = false
+      MLB = /** masked **/
+      MaxBIOSVersion = false
+      ProcessorType = 0
+      ROM = /** masked **/
+      SpoofVendor = true
+      SystemMemoryStatus = "Auto"
+      SystemProductName = "iMac17,1"
+      SystemSerialNumber = /** masked **/
+      SystemUUID = /** masked **/
+    }
+    Memory
+    {
+      DataWidth = 64
+      Devices
+      [
+        { }
+      ]
+      ErrorCorrection = 3
+      FormFactor = 9
+      MaxCapacity = 68719476736
+      TotalWidth = 64
+      Type = 26
+      TypeDetail = 128
+    }
+    UpdateDataHub = true
+    UpdateNVRAM = true
+    UpdateSMBIOS = true
+    UpdateSMBIOSMode = "Create"
+    UseRawUuidEncoding = false
+  }
+  UEFI
+  {
+    APFS
+    {
+      EnableJumpstart = true
+      GlobalConnect = false
+      HideVerbose = true
+      JumpstartHotPlug = false
+      MinDate = 0
+      MinVersion = 0
+    }
+    Audio
+    {
+      AudioCodec = 0
+      AudioDevice = "PciRoot(0x0)/Pci(0x1b,0x0)"
+      AudioOut = 0
+      AudioSupport = false
+      MinimumVolume = 20
+      PlayChime = "Auto"
+      SetupDelay = 0
+      VolumeAmplifier = 0
+    }
+    ConnectDrivers = true
+    Drivers
+    [
+      OpenRuntime.efi
+      HfsPlus.efi
+    ]
+    Input
+    {
+      KeyFiltering = false
+      KeyForgetThreshold = 5
+      KeyMergeThreshold = 2
+      KeySupport = true
+      KeySupportMode = "Auto"
+      KeySwap = false
+      PointerSupport = false
+      PointerSupportMode = "ASUS"
+      TimerResolution = 50000
+    }
+    Output
+    {
+      ClearScreenOnModeSwitch = false
+      ConsoleMode = ""
+      DirectGopRendering = false
+      ForceResolution = false
+      IgnoreTextInGraphics = false
+      ProvideConsoleGop = true
+      ReconnectOnResChange = false
+      ReplaceTabWithSpace = false
+      Resolution = "Max"
+      SanitiseClearScreen = false
+      TextRenderer = "BuiltinGraphics"
+      UgaPassThrough = false
+    }
+    ProtocolOverrides
+    {
+      AppleAudio = false
+      AppleBootPolicy = false
+      AppleDebugLog = false
+      AppleEvent = false
+      AppleFramebufferInfo = false
+      AppleImageConversion = false
+      AppleImg4Verification = false
+      AppleKeyMap = false
+      AppleRtcRam = false
+      AppleSecureBoot = false
+      AppleSmcIo = false
+      AppleUserInterfaceTheme = false
+      DataHub = false
+      DeviceProperties = false
+      FirmwareVolume = false
+      HashServices = false
+      OSInfo = false
+      UnicodeCollation = false
+    }
+    Quirks
+    {
+      DisableSecurityPolicy = false
+      ExitBootServicesDelay = 0
+      IgnoreInvalidFlexRatio = false
+      ReleaseUsbOwnership = true
+      RequestBootVarRouting = true
+      TscSyncTimeout = 0
+      UnblockFsConnect = false
+    }
+    ReservedMemory
+    [ ]
+  }
+}
