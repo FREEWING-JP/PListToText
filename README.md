@@ -14,11 +14,15 @@ PListToText.exe config.plist
 or  
 PListToText.exe config.plist nomask  
 
+![Windows](https://raw.githubusercontent.com/FREEWING-JP/PListToText/main/windows.png "Windows")  
+
 ## macOS + .NET Core 5.0  
 https://dotnet.microsoft.com/download/dotnet-core  
 dotnet PListToText.dll config.plist  
 or  
 dotnet PListToText.dll config.plist nomask  
+
+![macOS](https://raw.githubusercontent.com/FREEWING-JP/PListToText/main/macos.png "macOS")  
 
 ### This Program use This library
 A Simple PList Parser in C#  
